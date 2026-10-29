@@ -38,8 +38,8 @@ npx serve .
 Всё в `index.html`, искать поиском:
 
 - **PostHog.** Подключён (EU cloud), ключ проекта в начале первого `<script>`, строка `var KEY=...`. Аналитика работает только на опубликованном сайте.
-  Само собой собираются посещения и клики. Отдельные события: `download_click` (store, place), `social_click`, `faq_open`, `score_toggle`.
-- **Кнопки сторов.** Сейчас `href="#get"` у всех `class="store"`. Когда появятся ссылки на App Store и Google Play, заменить.
+  Само собой собираются посещения и клики. Отдельные события: `store_interest` (store, place) — нажатия на кнопки сторов, пока приложение «скоро»; `cta_click` (place) — кнопка в шапке и нижней панели; `social_click`, `faq_open`, `score_toggle`. У каждой кнопки есть `data-attr`, оно же в свойстве `button`.
+- **Кнопки сторов.** Сейчас обе в состоянии «Coming soon» (`<button class="store soon">`), в шапке и нижней панели кнопка «Coming soon». На релизе заменить на ссылки `<a class="store" href="…">`, текст «Download on the / Get it on» и вернуть «Download».
 - **Соцсети.** `https://instagram.com/trymena` и `https://t.me/trymena`: проверить, что это ваши аккаунты.
 - **Terms.** В подвале ссылка `href="#"`, нужна страница с условиями. Privacy сейчас ведёт на блок про приватность, для сторов понадобится полноценная страница политики.
 

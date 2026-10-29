@@ -57,6 +57,9 @@ h1,h2,h3{font-weight:600; text-wrap:balance; letter-spacing:-.03em}
 .store svg{flex-shrink:0}
 .store span{display:flex; flex-direction:column; line-height:1.1; text-align:left}
 .store small{font-size:11px; opacity:.75} .store b{font-size:17px; font-weight:600; white-space:nowrap}
+.store.soon{border:0; font:inherit; background:transparent; color:var(--sub); box-shadow:inset 0 0 0 1.5px var(--hair); cursor:default}
+.store.soon.main{background:var(--ink); color:var(--page); box-shadow:none}
+.store.soon:hover{opacity:1} .store.soon:active{transform:none}
 
 /* nav */
 .nav{position:sticky; top:env(safe-area-inset-top,0px); z-index:20; background:var(--glass); backdrop-filter:saturate(1.8) blur(20px); -webkit-backdrop-filter:saturate(1.8) blur(20px); border-bottom:1px solid var(--hair)}
@@ -148,6 +151,7 @@ details[open] summary svg{transform:rotate(45deg)}
 /* end + footer */
 .end{text-align:center; padding-block:56px 24px}
 .end h2{font-size:36px; line-height:1.05; margin-top:14px}
+.end .soonline{font-size:17px; color:var(--sub); margin-top:10px}
 .end .stores{max-width:420px; margin:24px auto 0}
 .foot{border-top:1px solid var(--hair); margin-top:48px; padding-block:18px 28px; display:flex; flex-direction:column; gap:10px; font-size:13px; color:var(--sub)}
 .social{display:flex; align-items:center; justify-content:center; gap:14px}
@@ -226,7 +230,7 @@ details[open] summary svg{transform:rotate(45deg)}
     <a data-attr="nav_logo" class="logo" href="#top" aria-label="Mena, home"><svg width="30" height="30" style="color:var(--ink)"><use href="#mark"/></svg>mena</a>
     <nav class="links" aria-label="Sections"><a data-attr="nav_how_it_works" href="#plan">How it works</a><a data-attr="nav_your_score" href="#score">Your score</a><a data-attr="nav_privacy" href="#privacy">Privacy</a><a data-attr="nav_pricing" href="#pricing">Pricing</a><a data-attr="nav_faq" href="#faq">FAQ</a></nav>
     <div class="navr">
-      <a data-attr="nav_download" class="btn" href="#get">Download</a>
+      <a data-attr="nav_coming_soon" class="btn" href="#get">Coming soon</a>
     </div>
   </div>
 </header>
@@ -238,8 +242,8 @@ details[open] summary svg{transform:rotate(45deg)}
         <h1 id="h1">Look your best, <span class="soft">one step at a time</span></h1>
         <p class="sub">Three photos, a score for every area, and a 12-week plan of short daily steps built around your face.</p>
         <div class="stores" id="heroStores">
-          <a data-attr="hero_app_store" class="store" href="#get"><svg width="22" height="22"><use href="#apple"/></svg><span><small>Download on the</small><b>App Store</b></span></a>
-          <a data-attr="hero_google_play" class="store" href="#get"><svg width="20" height="20"><use href="#play"/></svg><span><small>Get it on</small><b>Google Play</b></span></a>
+          <button type="button" data-attr="hero_app_store_soon" class="store soon main" aria-disabled="true"><svg width="22" height="22"><use href="#apple"/></svg><span><small>Coming soon to the</small><b>App Store</b></span></button>
+          <button type="button" data-attr="hero_google_play_soon" class="store soon" aria-disabled="true"><svg width="20" height="20"><use href="#play"/></svg><span><small>Coming soon to</small><b>Google Play</b></span></button>
         </div>
         <div class="trust"><span><svg width="14" height="14"><use href="#lock"/></svg>Photos stay on your phone</span><span>First analysis free</span></div>
       </div>
@@ -337,9 +341,10 @@ details[open] summary svg{transform:rotate(45deg)}
   <section class="end wrap" id="get" aria-labelledby="t10">
     <svg width="56" height="56" style="color:var(--ink)"><use href="#mark"/></svg>
     <h2 id="t10">Start with three photos</h2>
+    <p class="soonline">Launching soon on iPhone and Android.</p>
     <div class="stores">
-      <a data-attr="end_app_store" class="store" href="#get"><svg width="22" height="22"><use href="#apple"/></svg><span><small>Download on the</small><b>App Store</b></span></a>
-      <a data-attr="end_google_play" class="store" href="#get"><svg width="20" height="20"><use href="#play"/></svg><span><small>Get it on</small><b>Google Play</b></span></a>
+      <button type="button" data-attr="end_app_store_soon" class="store soon main" aria-disabled="true"><svg width="22" height="22"><use href="#apple"/></svg><span><small>Coming soon to the</small><b>App Store</b></span></button>
+      <button type="button" data-attr="end_google_play_soon" class="store soon" aria-disabled="true"><svg width="20" height="20"><use href="#play"/></svg><span><small>Coming soon to</small><b>Google Play</b></span></button>
     </div>
     <footer class="foot">
       <div class="social"><span>© 2026 Mena</span><a data-attr="footer_instagram" href="https://instagram.com/trymena" target="_blank" rel="noopener" aria-label="Mena on Instagram"><svg width="20" height="20"><use href="#ig"/></svg></a><a data-attr="footer_telegram" href="https://t.me/trymena" target="_blank" rel="noopener" aria-label="Mena on Telegram"><svg width="20" height="20"><use href="#tg"/></svg></a></div>
@@ -349,8 +354,8 @@ details[open] summary svg{transform:rotate(45deg)}
 </main>
 
 <div class="dock" id="dock" aria-hidden="true">
-  <div class="t"><span class="ic"><svg width="26" height="26" style="color:#F5F5F3"><use href="#mark"/></svg></span><div><b>Mena</b><span class="s">Your 12-week plan</span></div></div>
-  <a data-attr="dock_download" class="btn" href="#get" tabindex="-1">Download</a>
+  <div class="t"><span class="ic"><svg width="26" height="26" style="color:#F5F5F3"><use href="#mark"/></svg></span><div><b>Mena</b><span class="s">Coming to iPhone and Android</span></div></div>
+  <a data-attr="dock_coming_soon" class="btn" href="#get" tabindex="-1">Coming soon</a>
 </div>
 
 <script>
@@ -370,9 +375,9 @@ details[open] summary svg{transform:rotate(45deg)}
   function track(name, props){ try{ props=props||{}; props.button=curBtn; if(window.posthog && posthog.capture) posthog.capture(name, props); }catch(e){} }
   document.addEventListener('click',function(e){
     var a=e.target.closest && e.target.closest('a,button,summary'); if(!a) return; curBtn=a.getAttribute('data-attr')||'';
-    if(a.classList.contains('store')) track('download_click',{store:a.textContent.indexOf('Google')>-1?'google_play':'app_store', place:a.closest('#heroStores')?'hero':'end'});
-    else if(a.closest('.dock')) track('download_click',{store:'unknown', place:'dock'});
-    else if(a.closest('.nav') && a.classList.contains('btn')) track('download_click',{store:'unknown', place:'nav'});
+    if(a.classList.contains('store')) track('store_interest',{store:a.textContent.indexOf('Google')>-1?'google_play':'app_store', place:a.closest('#heroStores')?'hero':'end'});
+    else if(a.closest('.dock')) track('cta_click',{place:'dock'});
+    else if(a.closest('.nav') && a.classList.contains('btn')) track('cta_click',{place:'nav'});
     else if(a.closest('.social')) track('social_click',{network:a.getAttribute('aria-label').indexOf('Instagram')>-1?'instagram':'telegram'});
     else if(a.tagName==='SUMMARY') track('faq_open',{question:a.textContent.trim()});
     else if(a.id==='b12') track('score_toggle',{view:'in_12_weeks'});
