@@ -37,7 +37,7 @@ npx serve .
 
 Всё в `index.html`, искать поиском:
 
-- **PostHog.** В начале первого `<script>` строка `var KEY='';`. Вставить Project API key из PostHog (EU cloud). Пока ключ пустой, аналитика не грузится.
+- **PostHog.** Подключён (EU cloud), ключ проекта в начале первого `<script>`, строка `var KEY=...`. Аналитика работает только на опубликованном сайте.
   Само собой собираются посещения и клики. Отдельные события: `download_click` (store, place), `social_click`, `faq_open`, `score_toggle`.
 - **Кнопки сторов.** Сейчас `href="#get"` у всех `class="store"`. Когда появятся ссылки на App Store и Google Play, заменить.
 - **Соцсети.** `https://instagram.com/trymena` и `https://t.me/trymena`: проверить, что это ваши аккаунты.
