@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mena: look your best, one step at a time</title>
+<meta name="description" content="Three photos, a score for every area, and a 12-week plan of short daily steps built around your face.">
+<meta name="theme-color" content="#F5F5F3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://trymena.app/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://trymena.app/">
+<meta property="og:title" content="Mena: look your best, one step at a time">
+<meta property="og:description" content="Three photos, a score for every area, and a 12-week plan of short daily steps built around your face.">
+<meta property="og:image" content="https://trymena.app/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;600&display=swap">
+<style>
+/* Layout: mobile-first. Base styles are the phone layout; 760px adds 2-column tiles, 1000px puts the hero side by side. Content column 1104px. */
+:root{
+  --page:#F5F5F3; --tile:#FFFFFF; --tile-2:#EDEDEA; --ink:#141414; --sub:#5A5A57; --hair:#E2E2DE;
+  --skin:#E3AF93; --skin-ink:#8A4E33; --mist:#F7E4D9; --mist-2:#FBEFE8;
+  --night:#141414; --night-ink:#F5F5F3; --night-sub:#A6A6A1; --night-hair:#2C2C2A; --night-tile:#232322;
+  --glass:rgba(245,245,243,.82); --best-ring:transparent;
+  --sans:'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --gut:max(16px, env(safe-area-inset-left,0px));
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --page:#000000; --tile:#121212; --tile-2:#1C1C1B; --ink:#F5F5F3; --sub:#A6A6A1; --hair:#262624;
+  --skin:#E3AF93; --skin-ink:#E8B89D; --mist:#1F1712; --mist-2:#0C0A09;
+  --night:#1C1C1B; --night-ink:#F5F5F3; --night-sub:#A6A6A1; --night-hair:#2C2C2A; --night-tile:#2A2A28;
+  --glass:rgba(0,0,0,.72); --best-ring:#E3AF93; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --page:#000000; --tile:#121212; --tile-2:#1C1C1B; --ink:#F5F5F3; --sub:#A6A6A1; --hair:#262624;
+  --skin:#E3AF93; --skin-ink:#E8B89D; --mist:#1F1712; --mist-2:#0C0A09;
+  --night:#1C1C1B; --night-ink:#F5F5F3; --night-sub:#A6A6A1; --night-hair:#2C2C2A; --night-tile:#2A2A28;
+  --glass:rgba(0,0,0,.72); --best-ring:#E3AF93; color-scheme:dark }
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:72px}
+body{background:var(--page); color:var(--ink); font-family:var(--sans); font-size:17px; line-height:1.47; letter-spacing:-.011em; -webkit-font-smoothing:antialiased; overflow-x:hidden; transition:background .3s,color .3s}
+body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:30; background:var(--page)}
+a{color:inherit; text-decoration:none}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{font-weight:600; text-wrap:balance; letter-spacing:-.03em}
+.wrap{max-width:1104px; margin:0 auto; padding-left:var(--gut); padding-right:max(16px, env(safe-area-inset-right,0px))}
+:focus-visible{outline:2px solid var(--skin-ink); outline-offset:3px; border-radius:10px}
+.btn{display:inline-flex; align-items:center; justify-content:center; height:40px; padding:0 18px; border-radius:20px; background:var(--ink); color:var(--page); font-weight:600; font-size:15px; transition:opacity .2s; white-space:nowrap}
+.btn:hover{opacity:.86}
+
+/* store buttons */
+.stores{display:flex; gap:10px; width:100%}
+.store{flex:1; display:flex; align-items:center; justify-content:center; gap:10px; height:56px; padding:0 14px; border-radius:16px; background:var(--ink); color:var(--page); transition:transform .2s, opacity .2s; min-width:0}
+.store:hover{opacity:.88} .store:active{transform:scale(.98)}
+.store svg{flex-shrink:0}
+.store span{display:flex; flex-direction:column; line-height:1.1; text-align:left}
+.store small{font-size:11px; opacity:.75} .store b{font-size:17px; font-weight:600; white-space:nowrap}
+
+/* nav */
+.nav{position:sticky; top:env(safe-area-inset-top,0px); z-index:20; background:var(--glass); backdrop-filter:saturate(1.8) blur(20px); -webkit-backdrop-filter:saturate(1.8) blur(20px); border-bottom:1px solid var(--hair)}
+.nav .wrap{height:60px; display:flex; align-items:center; gap:24px}
+.logo{display:flex; align-items:center; gap:7px; font-size:22px; font-weight:600; letter-spacing:-.03em; margin-right:auto}
+.links{display:none; gap:28px; font-size:15px; font-weight:500; color:var(--sub)}
+.links a:hover{color:var(--ink)}
+.navr{display:flex; align-items:center; gap:8px}
+
+/* phone */
+.phone{position:relative; width:var(--w,240px); aspect-ratio:393/852; padding:calc(var(--w,240px)*.03); border-radius:calc(var(--w,240px)*.16); background:#0B0B0B; box-shadow:inset 0 0 0 1.5px #3A3A38, 0 30px 60px -20px rgba(0,0,0,.35); flex-shrink:0}
+.phone video,.phone img{display:block; width:100%; height:100%; object-fit:cover; border-radius:calc(var(--w,240px)*.135); background:#F5F5F3}
+
+/* hero: first screen */
+.hero{position:relative; overflow:hidden; background:radial-gradient(120% 70% at 50% 100%, var(--mist) 0%, var(--mist-2) 45%, var(--page) 75%)}
+.hero .in{display:flex; flex-direction:column; align-items:center; text-align:center; min-height:calc(100svh - 60px - env(safe-area-inset-top,0px)); padding-top:clamp(28px,6svh,56px)}
+.hero .copy{display:flex; flex-direction:column; align-items:center; width:100%}
+.hero h1{font-size:clamp(42px,11.5vw,56px); line-height:1.02; letter-spacing:-.045em; animation:rise .9s .05s cubic-bezier(.2,.8,.2,1) both}
+.hero h1 .soft{display:block; font-weight:300; color:var(--sub)}
+.hero .sub{font-size:18px; line-height:1.4; color:var(--sub); max-width:30ch; margin-top:16px; animation:rise .9s .15s cubic-bezier(.2,.8,.2,1) both}
+.hero .stores{max-width:420px; margin-top:26px; animation:rise .9s .25s cubic-bezier(.2,.8,.2,1) both}
+.hero .trust{display:flex; flex-wrap:wrap; justify-content:center; gap:4px 16px; font-size:13px; color:var(--sub); margin-top:14px}
+.hero .trust span{display:flex; align-items:center; gap:5px}
+.hero .stage{position:relative; flex:1; width:100%; min-height:300px; margin-top:32px}
+.hero .stage .phone{--w:min(250px, 64vw); position:absolute; top:0; left:50%; margin-left:calc(var(--w) / -2); animation:up 1.1s .3s cubic-bezier(.2,.8,.2,1) both}
+.hero .stage .phone.back{display:none}
+@keyframes rise{from{transform:translateY(14px)}to{transform:none}}
+@keyframes up{from{transform:translateY(60px)}to{transform:none}}
+
+/* tiles */
+.tiles{display:grid; grid-template-columns:1fr; gap:12px; padding-block:12px}
+.tile{position:relative; border-radius:28px; background:var(--tile); overflow:hidden; text-align:center; padding:40px 22px 0; display:flex; flex-direction:column; align-items:center; min-width:0; transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.tile.pre{transform:translateY(28px) scale(.985)}
+.tile h2{font-size:32px; line-height:1.06}
+.tile p{font-size:17px; color:var(--sub); margin-top:10px; max-width:34ch; text-wrap:balance}
+.tile .shot{margin-top:28px; height:340px; display:flex; gap:12px; justify-content:center; align-items:flex-start; overflow:hidden; width:100%}
+.tile .shot .phone{--w:220px}
+.tile.mist{container-type:inline-size}
+.tile .shot.two{--pw:min(200px, calc((100cqi - 14px) / 2)); gap:14px; height:calc(var(--pw) * 1.75)}
+.tile .shot.two .phone{--w:var(--pw)}
+.tile.dark{background:var(--night); color:var(--night-ink)} .tile.dark p{color:var(--night-sub)}
+.tile.mist{background:var(--mist)}
+
+/* score */
+.score{display:grid; grid-template-columns:1fr; gap:28px; width:100%; padding:0 0 40px}
+.score h2{font-size:28px}
+.tile.dark .num{font-size:120px; line-height:.85; font-weight:300; letter-spacing:-.06em; font-variant-numeric:tabular-nums; color:var(--night-ink); margin-top:20px; transition:color .5s}
+.tile.dark .num.up{color:var(--skin)}
+.tile.dark .cap{font-size:14px; color:var(--night-sub); margin:12px auto 0}
+.score .zones+.cap{text-align:center}
+.seg{display:inline-flex; padding:3px; border-radius:20px; background:var(--night-tile); margin-bottom:22px}
+.seg button{height:36px; padding:0 18px; border:0; border-radius:18px; background:transparent; color:var(--night-sub); font:inherit; font-size:15px; font-weight:600; cursor:pointer; transition:background .25s,color .25s}
+.seg button[aria-pressed="true"]{background:var(--night-ink); color:var(--night)}
+.zones{display:flex; flex-direction:column; gap:14px; text-align:left}
+.zone{display:grid; grid-template-columns:76px minmax(0,1fr) 34px; gap:12px; align-items:center; font-size:15px}
+.zone .bar{height:6px; border-radius:3px; background:var(--night-hair); overflow:hidden}
+.zone .fill{display:block; height:100%; border-radius:3px; background:var(--night-ink); transition:width .9s cubic-bezier(.2,.8,.2,1), background .5s}
+.score.on .fill{background:var(--skin)}
+.zone .v{text-align:right; font-weight:600; font-variant-numeric:tabular-nums}
+
+/* lock */
+.lock{display:grid; gap:28px; padding-bottom:40px; width:100%}
+.lock p{margin-left:auto; margin-right:auto}
+.lock img{width:100%; height:auto; max-width:420px; justify-self:center; filter:drop-shadow(0 30px 50px rgba(0,0,0,.35))}
+
+/* privacy, pricing, faq */
+.tile.pad{padding-bottom:40px}
+.cols{display:grid; gap:28px; margin-top:32px; width:100%}
+.cols div{display:flex; flex-direction:column; align-items:center; text-align:center; gap:4px}
+.cols svg{color:var(--skin-ink); margin-bottom:6px}
+.cols h3{font-size:19px; letter-spacing:-.015em}
+.tile .cols p{font-size:16px; margin:0 auto; max-width:30ch}
+.plans{display:grid; gap:10px; width:100%; margin-top:28px; text-align:left}
+.plan{border-radius:20px; background:var(--tile-2); padding:20px 22px; display:grid; grid-template-columns:1fr auto; align-items:center; gap:2px 12px}
+.plan.best{background:var(--night); color:var(--night-ink); box-shadow:inset 0 0 0 1.5px var(--best-ring)}
+.plan b{font-size:17px; display:flex; gap:8px; align-items:center}
+.plan .price{grid-row:span 2; font-size:34px; font-weight:400; letter-spacing:-.04em; font-variant-numeric:tabular-nums}
+.plan .per{font-size:14px; color:var(--sub)} .plan.best .per{color:var(--night-sub)}
+.tag{font-size:12px; font-weight:600; padding:3px 9px; border-radius:10px; background:var(--skin); color:#141414}
+.tile .fine{font-size:13px; color:var(--sub); margin-top:14px}
+.faq{text-align:left; align-items:stretch}
+.faq h2{text-align:center; margin-bottom:18px}
+details{border-top:1px solid var(--hair)}
+summary{list-style:none; cursor:pointer; padding:18px 0; display:flex; justify-content:space-between; gap:16px; font-size:17px; font-weight:600; letter-spacing:-.015em}
+summary::-webkit-details-marker{display:none}
+summary svg{flex-shrink:0; transition:transform .25s; color:var(--sub)}
+details[open] summary svg{transform:rotate(45deg)}
+.tile details p{padding:0 34px 18px 0; color:var(--sub); font-size:16px; max-width:none; margin:0; text-wrap:pretty}
+
+/* end + footer */
+.end{text-align:center; padding-block:56px 24px}
+.end h2{font-size:36px; line-height:1.05; margin-top:14px}
+.end .stores{max-width:420px; margin:24px auto 0}
+.foot{border-top:1px solid var(--hair); margin-top:48px; padding-block:18px 28px; display:flex; flex-direction:column; gap:10px; font-size:13px; color:var(--sub)}
+.social{display:flex; align-items:center; justify-content:center; gap:14px}
+.social a{display:flex; width:36px; height:36px; border-radius:50%; align-items:center; justify-content:center; background:var(--tile); color:var(--ink); transition:background .2s,color .2s}
+.social a:hover{background:var(--ink); color:var(--page)}
+.foot nav{display:flex; gap:18px; flex-wrap:wrap; justify-content:center}
+
+/* sticky download bar (phones) */
+.dock{position:fixed; left:0; right:0; bottom:0; z-index:25; padding:10px max(12px, env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(12px, env(safe-area-inset-left,0px)); background:var(--glass); backdrop-filter:saturate(1.8) blur(20px); -webkit-backdrop-filter:saturate(1.8) blur(20px); border-top:1px solid var(--hair); display:flex; align-items:center; gap:12px; transform:translateY(110%); transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.dock.show{transform:none}
+.dock .t{flex:1; display:flex; align-items:center; gap:10px; font-size:14px; line-height:1.2; min-width:0}
+.dock .t b{display:block; font-size:15px}
+.dock .t span.s{color:var(--sub)}
+.dock .ic{width:40px; height:40px; border-radius:10px; background:#141414; display:flex; align-items:center; justify-content:center; flex-shrink:0}
+
+/* ≥ 760: two-column tiles */
+@media (min-width:760px){
+  .hero .in{min-height:0}
+  .hero .stage{flex:none; height:440px; min-height:0}
+  .hero .stage .phone{--w:290px}
+  .tiles{grid-template-columns:1fr 1fr}
+  .tile{padding:52px 32px 0}
+  .tile h2{font-size:40px}
+  .tile .shot{height:400px}
+  .tile .shot .phone{--w:240px}
+  .tile .shot.two{--pw:min(210px, calc((100cqi - 14px) / 2)); height:calc(var(--pw) * 1.75)}
+  .tile.wide{grid-column:1 / -1}
+  .tile.wide > p{max-width:60ch}
+  .score,.lock{grid-template-columns:1fr 1fr; align-items:center; text-align:left; padding:16px 24px 52px}
+  .tile.dark .num{font-size:180px}
+  .score h2{font-size:40px}
+  .tile.dark .score .cap{margin-left:0; margin-right:0}
+  .lock p{margin-left:0; margin-right:0}
+  .score .zones+.cap{text-align:left}
+  .cols{grid-template-columns:repeat(3,minmax(0,1fr)); gap:28px}
+  .plans{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .plan{display:flex; flex-direction:column; gap:6px; padding:22px 22px 24px}
+  .plan .price{font-size:40px; margin-top:6px}
+  .faq{padding-inline:56px}
+  .end h2{font-size:52px}
+  .foot{flex-direction:row; justify-content:space-between}
+  .dock{display:none}
+}
+@media (min-width:880px){.links{display:flex}}
+
+/* ≥ 1000: hero side by side */
+@media (min-width:1000px){
+  .hero .in{flex-direction:row; align-items:center; text-align:left; gap:40px; min-height:min(760px, calc(100svh - 60px)); padding-top:0}
+  .hero .copy{flex:1.05; align-items:flex-start; padding-block:48px}
+  .hero h1{font-size:60px}
+  .hero h1 .soft{white-space:nowrap}
+  .hero .stage{height:auto}
+  .hero .sub{font-size:21px; max-width:32ch}
+  .hero .stores{max-width:400px}
+  .hero .trust{justify-content:flex-start}
+  .hero .stage{flex:.95; align-self:stretch; min-height:0; margin-top:0}
+  .hero .stage .phone{--w:270px; top:auto; bottom:-90px; left:auto; right:6%; margin-left:0}
+  .hero .stage .phone.back{display:block; --w:225px; right:auto; left:4%; bottom:-30px; animation-delay:.45s}
+}
+@media (prefers-reduced-motion: reduce){*{transition:none!important; animation:none!important} .tile.pre{transform:none} html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="11 16 100 100"><g fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><path d="M26 46C34 38 46 37 56 44C60 54 61 66 56 76C60 80 66 80 70 76" stroke="currentColor"/><path d="M66 42L74 49C80 40 87 36 96 36" stroke="#E3AF93"/><path d="M50 92C57 96 67 96 74 92" stroke="currentColor"/></g></symbol>
+  <symbol id="plus" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="lock" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M5 11h14a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2zM7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+  <symbol id="shield" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></symbol>
+  <symbol id="trash" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></symbol>
+  <symbol id="apple" viewBox="0 0 24 24"><path fill="currentColor" d="M16.4 12.6c0-2.4 2-3.5 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8 1.5 0 1.9.8 3.2.8 1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.5-1-2.5-4zM14 5.4c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4z"/></symbol>
+  <symbol id="ig" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/></g><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor"/></symbol>
+  <symbol id="tg" viewBox="0 0 24 24"><path fill="currentColor" d="M21.4 4.3 2.9 11.4c-1.2.5-1.2 1.2-.2 1.5l4.7 1.5 1.8 5.6c.2.6.1.9.8.9.5 0 .7-.2 1-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.8c.3-1.3-.5-1.9-1.5-1.4zM8.6 14.1l9.6-6c.5-.3.9-.1.5.2l-8 7.3-.3 3.3-1.8-4.8z"/></symbol>
+  <symbol id="play" viewBox="0 0 24 24"><path fill="currentColor" d="M4.3 2.6c-.2.2-.3.5-.3.9v17c0 .4.1.7.3.9l9.6-9.4-9.6-9.4zm10.7 10.5 2.6 2.6-11.6 6.6 9-9.2zm0-2.2-9-9.2 11.6 6.6-2.6 2.6zm4.1 1.1c.6.4.6 1.6 0 2l-2.6 1.5-2.8-2.8 2.8-2.8 2.6 2.1z"/></symbol>
+</svg>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Mena, home"><svg width="30" height="30" style="color:var(--ink)"><use href="#mark"/></svg>mena</a>
+    <nav class="links" aria-label="Sections"><a href="#plan">How it works</a><a href="#score">Your score</a><a href="#privacy">Privacy</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></nav>
+    <div class="navr">
+      <a class="btn" href="#get">Download</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="h1">
+    <div class="wrap in">
+      <div class="copy">
+        <h1 id="h1">Look your best, <span class="soft">one step at a time</span></h1>
+        <p class="sub">Three photos, a score for every area, and a 12-week plan of short daily steps built around your face.</p>
+        <div class="stores" id="heroStores">
+          <a class="store" href="#get"><svg width="22" height="22"><use href="#apple"/></svg><span><small>Download on the</small><b>App Store</b></span></a>
+          <a class="store" href="#get"><svg width="20" height="20"><use href="#play"/></svg><span><small>Get it on</small><b>Google Play</b></span></a>
+        </div>
+        <div class="trust"><span><svg width="14" height="14"><use href="#lock"/></svg>Photos stay on your phone</span><span>First analysis free</span></div>
+      </div>
+      <div class="stage">
+        <div class="phone back"><video muted loop playsinline preload="none" data-poster="media/ResultV2_still.jpg" aria-label="Your results: score 6.4, potential 7.3"><source data-src="media/ResultV2.mp4" type="video/mp4"><source data-src="media/ResultV2.webm" type="video/webm"></video></div>
+        <div class="phone"><video autoplay muted loop playsinline preload="auto" poster="media/MapStep_still.jpg" aria-label="Plan map: branches grow from your score and a step gets ticked off"><source src="media/MapStep.mp4" type="video/mp4"><source src="media/MapStep.webm" type="video/webm"></video></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="tiles" id="plan">
+      <section class="tile" aria-labelledby="t1">
+        <h2 id="t1">Scored in seconds</h2>
+        <p>Skin, brows, hair, jawline and posture, each out of 10. Checked for light and angle before anything is sent.</p>
+        <div class="shot"><div class="phone"><video muted loop playsinline preload="none" data-poster="media/OnbAnalyzing_still.jpg" aria-label="Analyzing three photos"><source data-src="media/OnbAnalyzing.mp4" type="video/mp4"><source data-src="media/OnbAnalyzing.webm" type="video/webm"></video></div></div>
+      </section>
+      <section class="tile dark" aria-labelledby="t2">
+        <h2 id="t2">A plan you can see</h2>
+        <p>Your score in the center. Up to three areas around it, each a chain of steps that opens as you go.</p>
+        <div class="shot"><div class="phone"><video muted loop playsinline preload="none" data-poster="media/MapDark_still.jpg" aria-label="Plan map in dark mode, week 3 of 12"><source data-src="media/MapDark.mp4" type="video/mp4"><source data-src="media/MapDark.webm" type="video/webm"></video></div></div>
+      </section>
+
+      <section class="tile dark wide" id="score" aria-labelledby="t3">
+        <div class="score" id="scoreBox">
+          <div>
+            <h2 id="t3">See where you are<br><span style="color:var(--night-sub)">And where you can be</span></h2>
+            <p class="num" id="num" aria-live="polite">6.4</p>
+            <p class="cap">Your potential counts only what care, habits and style can change.</p>
+          </div>
+          <div>
+            <div class="seg" role="group" aria-label="Show score"><button type="button" id="bNow" aria-pressed="true">Now</button><button type="button" id="b12" aria-pressed="false">In 12 weeks</button></div>
+            <div class="zones" id="zones"></div>
+            <p class="cap">Example result</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="tile mist" aria-labelledby="t4">
+        <h2 id="t4">Every step shows you how</h2>
+        <p>Short animated scenes, what to buy, and a ready note to show your barber.</p>
+        <div class="shot two">
+          <div class="phone"><video muted loop playsinline preload="none" data-poster="media/Proc_double_cleanse_still.jpg" aria-label="Double cleanse routine"><source data-src="media/Proc_double_cleanse.mp4" type="video/mp4"><source data-src="media/Proc_double_cleanse.webm" type="video/webm"></video></div>
+          <div class="phone"><video muted loop playsinline preload="none" data-poster="media/Visit_still.jpg" aria-label="Haircut for your face shape, with a note for your barber"><source data-src="media/Visit.mp4" type="video/mp4"><source data-src="media/Visit.webm" type="video/webm"></video></div>
+        </div>
+      </section>
+      <section class="tile" aria-labelledby="t5">
+        <h2 id="t5">Progress, side by side</h2>
+        <p>A new photo every four weeks, compared with day one. Same light, same angle.</p>
+        <div class="shot"><div class="phone"><video muted loop playsinline preload="none" data-poster="media/FinalResultV2_still.jpg" aria-label="12-week result, before and after"><source data-src="media/FinalResultV2.mp4" type="video/mp4"><source data-src="media/FinalResultV2.webm" type="video/webm"></video></div></div>
+      </section>
+
+      <section class="tile dark wide" aria-labelledby="t6">
+        <div class="lock">
+          <div>
+            <h2 id="t6">Ten minutes a day<br><span style="color:var(--night-sub)">Even at 10 PM</span></h2>
+            <p style="margin-top:14px">If nothing is done by evening, a countdown to midnight shows your quickest step. Habits like sleep and water take one tap.</p>
+          </div>
+          <img src="media/lock.webp" loading="lazy" decoding="async" width="719" height="702" alt="Lock screen at 22:00 with a countdown to midnight and a one-minute step">
+        </div>
+      </section>
+
+      <section class="tile wide pad" id="privacy" aria-labelledby="t7">
+        <h2 id="t7">Your photos stay on your phone</h2>
+        <p>Privacy is built into how Mena works, not added later.</p>
+        <div class="cols">
+          <div><svg width="26" height="26"><use href="#lock"/></svg><h3>Kept on your device</h3><p>Sent encrypted only for analysis, then deleted.</p></div>
+          <div><svg width="26" height="26"><use href="#shield"/></svg><h3>Never used to train AI</h3><p>Your photos are never shown to anyone.</p></div>
+          <div><svg width="26" height="26"><use href="#trash"/></svg><h3>Delete in one tap</h3><p>All photos and data, from your profile.</p></div>
+        </div>
+      </section>
+
+      <section class="tile wide pad" id="pricing" aria-labelledby="t8">
+        <h2 id="t8">First analysis free</h2>
+        <p>The full 12-week plan comes with a subscription.</p>
+        <div class="plans">
+          <div class="plan best"><b>Yearly <span class="tag">Save 72%</span></b><span class="price">$49.99</span><span class="per">per year, $0.96 a week</span></div>
+          <div class="plan"><b>Monthly</b><span class="price">$14.99</span><span class="per">per month</span></div>
+          <div class="plan"><b>Weekly</b><span class="price">$7.99</span><span class="per">per week</span></div>
+        </div>
+        <p class="fine">Renews automatically. Cancel anytime in App Store or Google Play settings.</p>
+      </section>
+
+      <section class="tile wide pad faq" id="faq" aria-labelledby="t9">
+        <h2 id="t9">Questions</h2>
+        <details open><summary>How does Mena score my face?<svg width="18" height="18"><use href="#plus"/></svg></summary><p>AI reads your three photos and rates skin, brows, hair, jawline and posture from 1 to 10. Your potential counts only what care, habits and style can change.</p></details>
+        <details><summary>Is this medical advice?<svg width="18" height="18"><use href="#plus"/></svg></summary><p>No. Mena is a self-care plan. If we notice something worth checking, we pause that area and suggest you see a doctor first.</p></details>
+        <details><summary>What happens to my photos?<svg width="18" height="18"><use href="#plus"/></svg></summary><p>They stay on your phone. For analysis they are sent encrypted, processed and deleted. They are never used to train AI.</p></details>
+        <details><summary>How much time does it take?<svg width="18" height="18"><use href="#plus"/></svg></summary><p>You choose in the quiz. Most days take about ten minutes, in any order.</p></details>
+        <details><summary>Can I cancel anytime?<svg width="18" height="18"><use href="#plus"/></svg></summary><p>Yes. Your subscription is managed by the App Store or Google Play, and you can cancel in your phone settings.</p></details>
+      </section>
+    </div>
+  </div>
+
+  <section class="end wrap" id="get" aria-labelledby="t10">
+    <svg width="56" height="56" style="color:var(--ink)"><use href="#mark"/></svg>
+    <h2 id="t10">Start with three photos</h2>
+    <div class="stores">
+      <a class="store" href="#get"><svg width="22" height="22"><use href="#apple"/></svg><span><small>Download on the</small><b>App Store</b></span></a>
+      <a class="store" href="#get"><svg width="20" height="20"><use href="#play"/></svg><span><small>Get it on</small><b>Google Play</b></span></a>
+    </div>
+    <footer class="foot">
+      <div class="social"><span>© 2026 Mena</span><a href="https://instagram.com/trymena" target="_blank" rel="noopener" aria-label="Mena on Instagram"><svg width="20" height="20"><use href="#ig"/></svg></a><a href="https://t.me/trymena" target="_blank" rel="noopener" aria-label="Mena on Telegram"><svg width="20" height="20"><use href="#tg"/></svg></a></div>
+      <nav aria-label="Legal"><a href="#privacy">Privacy</a><a href="#">Terms</a><a href="#faq">Support</a><span style="user-select:all">support@trymena.app</span></nav>
+    </footer>
+  </section>
+</main>
+
+<div class="dock" id="dock" aria-hidden="true">
+  <div class="t"><span class="ic"><svg width="26" height="26" style="color:#F5F5F3"><use href="#mark"/></svg></span><div><b>Mena</b><span class="s">Your 12-week plan</span></div></div>
+  <a class="btn" href="#get" tabindex="-1">Download</a>
+</div>
+
+<script>
+/* PostHog: paste the project API key from PostHog (EU cloud) below. While it is empty nothing loads. */
+(function(){
+  var KEY='';
+  if(!KEY) return;
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once unregister identify alias reset opt_in_capturing opt_out_capturing has_opted_out_capturing get_distinct_id get_property".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  posthog.init(KEY,{api_host:'https://eu.i.posthog.com', autocapture:true, capture_pageview:true, capture_pageleave:true, persistence:'memory', disable_session_recording:true});
+})();
+</script>
+<script>
+(function(){
+  /* Analytics: PostHog (EU). Pageviews and every click are captured automatically; the events below add names we can chart. */
+  function track(name, props){ try{ if(window.posthog && posthog.capture) posthog.capture(name, props||{}); }catch(e){} }
+  document.addEventListener('click',function(e){
+    var a=e.target.closest && e.target.closest('a,button,summary'); if(!a) return;
+    if(a.classList.contains('store')) track('download_click',{store:a.textContent.indexOf('Google')>-1?'google_play':'app_store', place:a.closest('#heroStores')?'hero':'end'});
+    else if(a.closest('.dock')) track('download_click',{store:'unknown', place:'dock'});
+    else if(a.closest('.nav') && a.classList.contains('btn')) track('download_click',{store:'unknown', place:'nav'});
+    else if(a.closest('.social')) track('social_click',{network:a.getAttribute('aria-label').indexOf('Instagram')>-1?'instagram':'telegram'});
+    else if(a.tagName==='SUMMARY') track('faq_open',{question:a.textContent.trim()});
+    else if(a.id==='b12') track('score_toggle',{view:'in_12_weeks'});
+  });
+
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var Z=[['Skin',5.9,7.1],['Brows',6.6,7.4],['Hair',6.9,7.5],['Jawline',7.0,7.2],['Posture',5.8,7.3]];
+  document.getElementById('zones').innerHTML=Z.map(function(z,i){return '<div class="zone"><span>'+z[0]+'</span><span class="bar"><span class="fill" id="f'+i+'" style="width:'+z[1]*10+'%"></span></span><span class="v" id="v'+i+'">'+z[1].toFixed(1)+'</span></div>';}).join('');
+  var num=document.getElementById('num'), box=document.getElementById('scoreBox'), bN=document.getElementById('bNow'), b12=document.getElementById('b12'), on=false, raf;
+  function count(a,b){ if(reduce){num.textContent=b.toFixed(1);return;} var t0=performance.now(); cancelAnimationFrame(raf);
+    (function f(t){var k=Math.min(1,(t-t0)/700); k=1-Math.pow(1-k,3); num.textContent=(a+(b-a)*k).toFixed(1); if(k<1) raf=requestAnimationFrame(f);})(t0); }
+  function set(v){ if(v===on) return; on=v;
+    bN.setAttribute('aria-pressed',String(!v)); b12.setAttribute('aria-pressed',String(v));
+    box.classList.toggle('on',v); num.classList.toggle('up',v); count(v?6.4:7.3, v?7.3:6.4);
+    Z.forEach(function(z,i){ document.getElementById('f'+i).style.width=(v?z[2]:z[1])*10+'%'; document.getElementById('v'+i).textContent=(v?z[2]:z[1]).toFixed(1); });
+  }
+  bN.addEventListener('click',function(){set(false)}); b12.addEventListener('click',function(){set(true)});
+
+  if(!('IntersectionObserver' in window)) return;
+  if(!reduce){
+    var tiles=[].slice.call(document.querySelectorAll('.tile')), vh=window.innerHeight;
+    tiles.forEach(function(t){ if(t.getBoundingClientRect().top>vh) t.classList.add('pre'); });
+    var tio=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.remove('pre'); tio.unobserve(e.target);} });},{rootMargin:'0px 0px -8% 0px'});
+    tiles.forEach(function(t){tio.observe(t);});
+  }
+  function attach(v){ if(v.__src || !v.dataset.poster) return; v.__src=1; if(v.dataset.poster) v.poster=v.dataset.poster; [].forEach.call(v.querySelectorAll('source[data-src]'),function(s){ s.src=s.dataset.src; }); v.load(); }
+  var lazyV=[].slice.call(document.querySelectorAll('video[data-poster]'));
+  if('IntersectionObserver' in window){ var lio=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){ attach(e.target); lio.unobserve(e.target);} });},{rootMargin:'0px 0px 100% 0px'}); lazyV.forEach(function(v){lio.observe(v);}); } else lazyV.forEach(attach);
+  var vids=[].slice.call(document.querySelectorAll('video'));
+  if(reduce){ vids.forEach(function(v){v.removeAttribute('autoplay'); v.pause();}); }
+  else { var vio=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){attach(e.target); var p=e.target.play(); if(p&&p.catch)p.catch(function(){});} else e.target.pause(); });},{threshold:.1}); vids.forEach(function(v){vio.observe(v);}); }
+  var dock=document.getElementById('dock'), heroOut=false, endIn=false;
+  function upd(){ var s=heroOut && !endIn; dock.classList.toggle('show',s); dock.setAttribute('aria-hidden',String(!s)); dock.querySelector('a').tabIndex=s?0:-1; }
+  new IntersectionObserver(function(es){ heroOut=!es[0].isIntersecting; upd(); }).observe(document.getElementById('heroStores'));
+  new IntersectionObserver(function(es){ endIn=es[0].isIntersecting; upd(); }).observe(document.getElementById('get'));
+})();
+</script>
+
+</body>
+</html>
