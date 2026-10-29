@@ -226,10 +226,10 @@ details[open] summary svg{transform:rotate(45deg)}
 
 <header class="nav">
   <div class="wrap">
-    <a class="logo" href="#top" aria-label="Mena, home"><svg width="30" height="30" style="color:var(--ink)"><use href="#mark"/></svg>mena</a>
-    <nav class="links" aria-label="Sections"><a href="#plan">How it works</a><a href="#score">Your score</a><a href="#privacy">Privacy</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></nav>
+    <a data-attr="nav_logo" class="logo" href="#top" aria-label="Mena, home"><svg width="30" height="30" style="color:var(--ink)"><use href="#mark"/></svg>mena</a>
+    <nav class="links" aria-label="Sections"><a data-attr="nav_how_it_works" href="#plan">How it works</a><a data-attr="nav_your_score" href="#score">Your score</a><a data-attr="nav_privacy" href="#privacy">Privacy</a><a data-attr="nav_pricing" href="#pricing">Pricing</a><a data-attr="nav_faq" href="#faq">FAQ</a></nav>
     <div class="navr">
-      <a class="btn" href="#get">Download</a>
+      <a data-attr="nav_download" class="btn" href="#get">Download</a>
     </div>
   </div>
 </header>
@@ -241,8 +241,8 @@ details[open] summary svg{transform:rotate(45deg)}
         <h1 id="h1">Look your best, <span class="soft">one step at a time</span></h1>
         <p class="sub">Three photos, a score for every area, and a 12-week plan of short daily steps built around your face.</p>
         <div class="stores" id="heroStores">
-          <a class="store" href="#get"><svg width="22" height="22"><use href="#apple"/></svg><span><small>Download on the</small><b>App Store</b></span></a>
-          <a class="store" href="#get"><svg width="20" height="20"><use href="#play"/></svg><span><small>Get it on</small><b>Google Play</b></span></a>
+          <a data-attr="hero_app_store" class="store" href="#get"><svg width="22" height="22"><use href="#apple"/></svg><span><small>Download on the</small><b>App Store</b></span></a>
+          <a data-attr="hero_google_play" class="store" href="#get"><svg width="20" height="20"><use href="#play"/></svg><span><small>Get it on</small><b>Google Play</b></span></a>
         </div>
         <div class="trust"><span><svg width="14" height="14"><use href="#lock"/></svg>Photos stay on your phone</span><span>First analysis free</span></div>
       </div>
@@ -274,7 +274,7 @@ details[open] summary svg{transform:rotate(45deg)}
             <p class="cap">Your potential counts only what care, habits and style can change.</p>
           </div>
           <div>
-            <div class="seg" role="group" aria-label="Show score"><button type="button" id="bNow" aria-pressed="true">Now</button><button type="button" id="b12" aria-pressed="false">In 12 weeks</button></div>
+            <div class="seg" role="group" aria-label="Show score"><button type="button" id="bNow" data-attr="score_now" aria-pressed="true">Now</button><button type="button" id="b12" data-attr="score_in_12_weeks" aria-pressed="false">In 12 weeks</button></div>
             <div class="zones" id="zones"></div>
             <p class="cap">Example result</p>
           </div>
@@ -328,11 +328,11 @@ details[open] summary svg{transform:rotate(45deg)}
 
       <section class="tile wide pad faq" id="faq" aria-labelledby="t9">
         <h2 id="t9">Questions</h2>
-        <details open><summary>How does Mena score my face?<svg width="18" height="18"><use href="#plus"/></svg></summary><p>AI reads your three photos and rates skin, brows, hair, jawline and posture from 1 to 10. Your potential counts only what care, habits and style can change.</p></details>
-        <details><summary>Is this medical advice?<svg width="18" height="18"><use href="#plus"/></svg></summary><p>No. Mena is a self-care plan. If we notice something worth checking, we pause that area and suggest you see a doctor first.</p></details>
-        <details><summary>What happens to my photos?<svg width="18" height="18"><use href="#plus"/></svg></summary><p>They stay on your phone. For analysis they are sent encrypted, processed and deleted. They are never used to train AI.</p></details>
-        <details><summary>How much time does it take?<svg width="18" height="18"><use href="#plus"/></svg></summary><p>You choose in the quiz. Most days take about ten minutes, in any order.</p></details>
-        <details><summary>Can I cancel anytime?<svg width="18" height="18"><use href="#plus"/></svg></summary><p>Yes. Your subscription is managed by the App Store or Google Play, and you can cancel in your phone settings.</p></details>
+        <details open><summary data-attr="faq_how_scored">How does Mena score my face?<svg width="18" height="18"><use href="#plus"/></svg></summary><p>AI reads your three photos and rates skin, brows, hair, jawline and posture from 1 to 10. Your potential counts only what care, habits and style can change.</p></details>
+        <details><summary data-attr="faq_medical">Is this medical advice?<svg width="18" height="18"><use href="#plus"/></svg></summary><p>No. Mena is a self-care plan. If we notice something worth checking, we pause that area and suggest you see a doctor first.</p></details>
+        <details><summary data-attr="faq_photos">What happens to my photos?<svg width="18" height="18"><use href="#plus"/></svg></summary><p>They stay on your phone. For analysis they are sent encrypted, processed and deleted. They are never used to train AI.</p></details>
+        <details><summary data-attr="faq_time">How much time does it take?<svg width="18" height="18"><use href="#plus"/></svg></summary><p>You choose in the quiz. Most days take about ten minutes, in any order.</p></details>
+        <details><summary data-attr="faq_cancel">Can I cancel anytime?<svg width="18" height="18"><use href="#plus"/></svg></summary><p>Yes. Your subscription is managed by the App Store or Google Play, and you can cancel in your phone settings.</p></details>
       </section>
     </div>
   </div>
@@ -341,19 +341,19 @@ details[open] summary svg{transform:rotate(45deg)}
     <svg width="56" height="56" style="color:var(--ink)"><use href="#mark"/></svg>
     <h2 id="t10">Start with three photos</h2>
     <div class="stores">
-      <a class="store" href="#get"><svg width="22" height="22"><use href="#apple"/></svg><span><small>Download on the</small><b>App Store</b></span></a>
-      <a class="store" href="#get"><svg width="20" height="20"><use href="#play"/></svg><span><small>Get it on</small><b>Google Play</b></span></a>
+      <a data-attr="end_app_store" class="store" href="#get"><svg width="22" height="22"><use href="#apple"/></svg><span><small>Download on the</small><b>App Store</b></span></a>
+      <a data-attr="end_google_play" class="store" href="#get"><svg width="20" height="20"><use href="#play"/></svg><span><small>Get it on</small><b>Google Play</b></span></a>
     </div>
     <footer class="foot">
-      <div class="social"><span>© 2026 Mena</span><a href="https://instagram.com/trymena" target="_blank" rel="noopener" aria-label="Mena on Instagram"><svg width="20" height="20"><use href="#ig"/></svg></a><a href="https://t.me/trymena" target="_blank" rel="noopener" aria-label="Mena on Telegram"><svg width="20" height="20"><use href="#tg"/></svg></a></div>
-      <nav aria-label="Legal"><a href="#privacy">Privacy</a><a href="#">Terms</a><a href="#faq">Support</a><span style="user-select:all">support@trymena.app</span></nav>
+      <div class="social"><span>© 2026 Mena</span><a data-attr="footer_instagram" href="https://instagram.com/trymena" target="_blank" rel="noopener" aria-label="Mena on Instagram"><svg width="20" height="20"><use href="#ig"/></svg></a><a data-attr="footer_telegram" href="https://t.me/trymena" target="_blank" rel="noopener" aria-label="Mena on Telegram"><svg width="20" height="20"><use href="#tg"/></svg></a></div>
+      <nav aria-label="Legal"><a data-attr="footer_privacy" href="#privacy">Privacy</a><a data-attr="footer_terms" href="#">Terms</a><a data-attr="footer_support" href="#faq">Support</a><span style="user-select:all">support@trymena.app</span></nav>
     </footer>
   </section>
 </main>
 
 <div class="dock" id="dock" aria-hidden="true">
   <div class="t"><span class="ic"><svg width="26" height="26" style="color:#F5F5F3"><use href="#mark"/></svg></span><div><b>Mena</b><span class="s">Your 12-week plan</span></div></div>
-  <a class="btn" href="#get" tabindex="-1">Download</a>
+  <a data-attr="dock_download" class="btn" href="#get" tabindex="-1">Download</a>
 </div>
 
 <script>
@@ -368,9 +368,11 @@ details[open] summary svg{transform:rotate(45deg)}
 <script>
 (function(){
   /* Analytics: PostHog (EU). Pageviews and every click are captured automatically; the events below add names we can chart. */
-  function track(name, props){ try{ if(window.posthog && posthog.capture) posthog.capture(name, props||{}); }catch(e){} }
+  /* Every link and button has data-attr="<place>_<what>" (e.g. hero_app_store). PostHog attaches it to autocaptured clicks; the named events below also carry it as "button". */
+  var curBtn='';
+  function track(name, props){ try{ props=props||{}; props.button=curBtn; if(window.posthog && posthog.capture) posthog.capture(name, props); }catch(e){} }
   document.addEventListener('click',function(e){
-    var a=e.target.closest && e.target.closest('a,button,summary'); if(!a) return;
+    var a=e.target.closest && e.target.closest('a,button,summary'); if(!a) return; curBtn=a.getAttribute('data-attr')||'';
     if(a.classList.contains('store')) track('download_click',{store:a.textContent.indexOf('Google')>-1?'google_play':'app_store', place:a.closest('#heroStores')?'hero':'end'});
     else if(a.closest('.dock')) track('download_click',{store:'unknown', place:'dock'});
     else if(a.closest('.nav') && a.classList.contains('btn')) track('download_click',{store:'unknown', place:'nav'});
