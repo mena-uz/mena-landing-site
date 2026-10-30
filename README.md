@@ -40,7 +40,7 @@ npx serve .
 - **PostHog.** Подключён (EU cloud), ключ проекта в начале первого `<script>`, строка `var KEY=...`. Аналитика работает только на опубликованном сайте.
   Само собой собираются посещения и клики. Отдельные события: `store_interest` (store, place) — нажатия на кнопки сторов, пока приложение «скоро»; `cta_click` (place) — кнопка в шапке и нижней панели; `social_click`, `faq_open`, `score_toggle`, `waitlist_join` (source, place, duplicate), `waitlist_share` (method: native/copy, outcome: opened/shared/cancelled/copied). У каждой кнопки есть `data-attr`, оно же в свойстве `button`.
 - **Кнопки сторов.** Сейчас обе в состоянии «Coming soon» (`<button class="store soon">`), в шапке и нижней панели кнопка «Coming soon». На релизе заменить на ссылки `<a class="store" href="…">`, текст «Download on the / Get it on» и вернуть «Download».
-- **Соцсети.** `https://instagram.com/trymena` и `https://t.me/appmena`: проверить, что это ваши аккаунты.
+- **Соцсети.** `https://www.instagram.com/app.mena/` и `https://t.me/appmena`: проверить, что это ваши аккаунты.
 - **Terms.** В подвале ссылка `href="#"`, нужна страница с условиями. Privacy сейчас ведёт на блок про приватность, для сторов понадобится полноценная страница политики.
 
 ## Как устроены видео
