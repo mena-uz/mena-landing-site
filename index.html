@@ -162,6 +162,29 @@ details[open] summary svg{transform:rotate(45deg)}
 .social a:hover{background:var(--ink); color:var(--page)}
 .foot nav{display:flex; gap:18px; flex-wrap:wrap; justify-content:center}
 
+
+/* waitlist */
+.sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+.wl-wrap{width:100%; max-width:440px}
+.hero .hero-cta{width:100%; max-width:420px; margin-top:28px; animation:rise .9s .25s cubic-bezier(.2,.8,.2,1) both}
+.cta-main{display:flex; align-items:center; justify-content:center; height:58px; border-radius:29px; background:var(--ink); color:var(--page); font-size:17px; font-weight:600; letter-spacing:-.01em; box-shadow:0 10px 30px -12px rgba(0,0,0,.35); transition:opacity .2s, transform .2s}
+.cta-main:hover{opacity:.9} .cta-main:active{transform:scale(.98)}
+.end .wl-wrap{margin:26px auto 0}
+.pill{display:flex; align-items:center; height:60px; padding:6px; border-radius:30px; background:var(--tile); box-shadow:0 1px 2px rgba(0,0,0,.04), 0 10px 30px -12px rgba(0,0,0,.18), inset 0 0 0 1px var(--hair); transition:box-shadow .25s}
+.pill:focus-within{box-shadow:0 1px 2px rgba(0,0,0,.04), 0 10px 30px -12px rgba(0,0,0,.22), inset 0 0 0 1.5px var(--ink)}
+.pill input{flex:1; min-width:0; height:100%; padding:0 6px 0 16px; border:0; background:transparent; color:var(--ink); font:inherit; font-size:17px; outline:none}
+.pill input::placeholder{color:var(--sub)}
+.pill button{height:48px; padding:0 20px; border:0; border-radius:24px; background:var(--ink); color:var(--page); font:inherit; font-size:15px; font-weight:600; letter-spacing:-.01em; white-space:nowrap; cursor:pointer; transition:opacity .2s, transform .2s}
+.pill button:hover{opacity:.88} .pill button:active{transform:scale(.97)} .pill button[disabled]{opacity:.55; cursor:default}
+.wl-note{margin:12px 0 0; font-size:13px; color:var(--sub)}
+.wl-note.err{color:#C2412D}
+.wl-done{display:flex; align-items:center; gap:12px; height:60px; padding:6px 6px 6px 18px; border-radius:30px; background:var(--tile); box-shadow:inset 0 0 0 1px var(--hair); text-align:left}
+.wl-done .ok{width:26px; height:26px; border-radius:50%; background:var(--skin); color:#141414; display:flex; align-items:center; justify-content:center; flex-shrink:0}
+.wl-done b{flex:1; font-size:16px; font-weight:600; letter-spacing:-.01em}
+.wl-done button{height:48px; padding:0 18px; border:0; border-radius:24px; background:var(--tile-2); color:var(--ink); font:inherit; font-size:15px; font-weight:600; cursor:pointer}
+.soonrow{display:flex; align-items:center; justify-content:center; gap:5px; margin-top:18px; font-size:13px; color:var(--sub)}
+.soonrow svg{opacity:.75}
+
 /* sticky download bar (phones) */
 .dock{position:fixed; left:0; right:0; bottom:0; z-index:25; padding:10px max(12px, env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(12px, env(safe-area-inset-left,0px)); background:var(--glass); backdrop-filter:saturate(1.8) blur(20px); -webkit-backdrop-filter:saturate(1.8) blur(20px); border-top:1px solid var(--hair); display:flex; align-items:center; gap:12px; transform:translateY(110%); transition:transform .35s cubic-bezier(.2,.8,.2,1)}
 .dock.show{transform:none}
@@ -208,6 +231,7 @@ details[open] summary svg{transform:rotate(45deg)}
   .hero .sub{font-size:21px; max-width:32ch}
   .hero .stores{max-width:400px}
   .hero .trust{justify-content:flex-start}
+  .hero .hero-cta{max-width:300px}
   .hero .stage{flex:.95; align-self:stretch; min-height:0; margin-top:0; height:auto; overflow:visible; -webkit-mask-image:none; mask-image:none; display:block}
   .hero .stage .phone{--w:270px; position:absolute; bottom:-90px; right:6%}
   .hero .stage .phone.back{display:block; --w:225px; right:auto; left:4%; bottom:-30px; animation-delay:.45s}
@@ -233,7 +257,7 @@ details[open] summary svg{transform:rotate(45deg)}
     <a data-attr="nav_logo" class="logo" href="#top" aria-label="Mena, home"><svg width="30" height="30" style="color:var(--ink)"><use href="#mark"/></svg>mena</a>
     <nav class="links" aria-label="Sections"><a data-attr="nav_how_it_works" href="#plan">How it works</a><a data-attr="nav_your_score" href="#score">Your score</a><a data-attr="nav_privacy" href="#privacy">Privacy</a><a data-attr="nav_pricing" href="#pricing">Pricing</a><a data-attr="nav_faq" href="#faq">FAQ</a></nav>
     <div class="navr">
-      <a data-attr="nav_coming_soon" class="btn" href="#get">Coming soon</a>
+      <a data-attr="nav_join_waitlist" class="btn" href="#get" data-focus-wl>Get early access</a>
     </div>
   </div>
 </header>
@@ -244,11 +268,8 @@ details[open] summary svg{transform:rotate(45deg)}
       <div class="copy">
         <h1 id="h1">Look your best, <span class="soft">one step at a time</span></h1>
         <p class="sub">Three photos, a score for every area, and a 12-week plan of short daily steps built around your face.</p>
-        <div class="stores" id="heroStores">
-          <button type="button" data-attr="hero_app_store_soon" class="store soon main" aria-disabled="true"><svg width="22" height="22"><use href="#apple"/></svg><span><small>Coming soon to the</small><b>App Store</b></span></button>
-          <button type="button" data-attr="hero_google_play_soon" class="store soon" aria-disabled="true"><svg width="17" height="17"><use href="#play"/></svg><span><small>Coming soon to</small><b>Google Play</b></span></button>
-        </div>
-        <div class="trust"><span><svg width="14" height="14"><use href="#lock"/></svg>Photos stay on your phone</span><span>First analysis free</span></div>
+        <div class="hero-cta" id="heroStores"><a class="cta-main" href="#get" data-focus-wl data-attr="hero_get_early_access">Get early access</a></div>
+        <div class="trust"><span><svg width="13" height="13"><use href="#apple"/></svg>iPhone &amp; Android</span><span><svg width="14" height="14"><use href="#lock"/></svg>Photos stay on your phone</span><span>First analysis free</span></div>
       </div>
       <div class="stage">
         <div class="phone back"><video muted loop playsinline preload="none" data-poster="media/ResultV2_still.jpg" aria-label="Your results: score 6.4, potential 7.3"><source data-src="media/ResultV2.mp4" type="video/mp4"><source data-src="media/ResultV2.webm" type="video/webm"></video></div>
@@ -344,11 +365,18 @@ details[open] summary svg{transform:rotate(45deg)}
   <section class="end wrap" id="get" aria-labelledby="t10">
     <svg width="56" height="56" style="color:var(--ink)"><use href="#mark"/></svg>
     <h2 id="t10">Start with three photos</h2>
-    <p class="soonline">Launching soon on iPhone and Android.</p>
-    <div class="stores">
-      <button type="button" data-attr="end_app_store_soon" class="store soon main" aria-disabled="true"><svg width="22" height="22"><use href="#apple"/></svg><span><small>Coming soon to the</small><b>App Store</b></span></button>
-      <button type="button" data-attr="end_google_play_soon" class="store soon" aria-disabled="true"><svg width="17" height="17"><use href="#play"/></svg><span><small>Coming soon to</small><b>Google Play</b></span></button>
+    <p class="soonline">Be first in line when Mena launches.</p>
+    <div class="wl-wrap end-wl">
+        <form class="wl" data-place="end" novalidate>
+          <label class="sr" for="wl-end">Email</label>
+          <div class="pill">
+            <input id="wl-end" type="email" name="email" inputmode="email" autocomplete="email" placeholder="Enter your email" required>
+            <button type="submit" data-attr="end_waitlist_submit">Get early access</button>
+          </div>
+          <p class="wl-note">One email when Mena launches. Nothing else.</p>
+        </form>
     </div>
+    <p class="soonrow"><svg width="13" height="13"><use href="#apple"/></svg>App Store &amp; <svg width="11" height="11"><use href="#play"/></svg>Google Play, coming soon</p>
     <footer class="foot">
       <div class="social"><span>© 2026 Mena</span><a data-attr="footer_instagram" href="https://instagram.com/trymena" target="_blank" rel="noopener" aria-label="Mena on Instagram"><svg width="20" height="20"><use href="#ig"/></svg></a><a data-attr="footer_telegram" href="https://t.me/trymena" target="_blank" rel="noopener" aria-label="Mena on Telegram"><svg width="20" height="20"><use href="#tg"/></svg></a></div>
       <nav aria-label="Legal"><a data-attr="footer_privacy" href="#privacy">Privacy</a><a data-attr="footer_terms" href="#">Terms</a><a data-attr="footer_support" href="#faq">Support</a><span style="user-select:all">support@trymena.app</span></nav>
@@ -358,7 +386,7 @@ details[open] summary svg{transform:rotate(45deg)}
 
 <div class="dock" id="dock" aria-hidden="true">
   <div class="t"><span class="ic"><svg width="26" height="26" style="color:#F5F5F3"><use href="#mark"/></svg></span><div><b>Mena</b><span class="s">Coming to iPhone and Android</span></div></div>
-  <a data-attr="dock_coming_soon" class="btn" href="#get" tabindex="-1">Coming soon</a>
+  <a data-attr="dock_join_waitlist" class="btn" href="#get" tabindex="-1" data-focus-wl>Get early access</a>
 </div>
 
 <script>
@@ -380,11 +408,41 @@ details[open] summary svg{transform:rotate(45deg)}
     var a=e.target.closest && e.target.closest('a,button,summary'); if(!a) return; curBtn=a.getAttribute('data-attr')||'';
     if(a.classList.contains('store')) track('store_interest',{store:a.textContent.indexOf('Google')>-1?'google_play':'app_store', place:a.closest('#heroStores')?'hero':'end'});
     else if(a.closest('.dock')) track('cta_click',{place:'dock'});
+    else if(a.classList.contains('cta-main')) track('cta_click',{place:'hero'});
     else if(a.closest('.nav') && a.classList.contains('btn')) track('cta_click',{place:'nav'});
     else if(a.closest('.social')) track('social_click',{network:a.getAttribute('aria-label').indexOf('Instagram')>-1?'instagram':'telegram'});
     else if(a.tagName==='SUMMARY') track('faq_open',{question:a.textContent.trim()});
     else if(a.id==='b12') track('score_toggle',{view:'in_12_weeks'});
   });
+
+
+  /* Waitlist: insert-only Supabase table (RLS), source from ?ref= / utm_source / referrer */
+  var SB_URL='https://jfyqemxtcrffqmbbdbbm.supabase.co', SB_KEY='sb_publishable_593rcSI9ALV7k8WMm5wifw_6PKQOHZc';
+  function wlSource(){ try{ var q=new URLSearchParams(location.search), r=(q.get('ref')||q.get('utm_source')||'').toLowerCase();
+      if(!r){ var d=(document.referrer||'').toLowerCase(); r=/tiktok/.test(d)?'tiktok':/instagram/.test(d)?'instagram':/youtu/.test(d)?'youtube':/t\.me|telegram/.test(d)?'telegram':d?'other':'direct'; }
+      r=r.replace(/[^a-z0-9_.-]/g,'').slice(0,40); r=({tt:'tiktok',tk:'tiktok',ig:'instagram',insta:'instagram',yt:'youtube',tg:'telegram'})[r]||r; return r||'direct'; }catch(e){ return 'direct'; } }
+  var WL_SRC=wlSource();
+  function wlDone(form){ var w=form.parentNode; try{ localStorage.setItem('mena-wl','1'); }catch(e){}
+    [].forEach.call(document.querySelectorAll('.cta-main,[data-focus-wl].btn'),function(b){ b.textContent='You\u2019re on the list'; });
+    [].forEach.call(document.querySelectorAll('.wl'),function(f){ f.outerHTML='<div class="wl-done"><span class="ok"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b>You&rsquo;re on the list</b><button type="button" class="wl-share" data-attr="waitlist_share">Share</button></div><p class="wl-note">We&rsquo;ll email you the day Mena launches.</p>'; });
+    [].forEach.call(document.querySelectorAll('.wl-share'),function(b){ b.addEventListener('click',function(){ var u='https://trymena.app/?ref=share'; if(navigator.share){ navigator.share({title:'Mena',text:'A 12-week plan to look your best',url:u}).catch(function(){}); } else { try{ navigator.clipboard.writeText(u); b.textContent='Link copied'; }catch(e){} } }); });
+  }
+  [].forEach.call(document.querySelectorAll('.wl'),function(form){
+    form.addEventListener('submit',function(e){ e.preventDefault();
+      var em=form.email.value.trim(), msg=form.querySelector('.wl-note'), btn=form.querySelector('button'), base='One email when Mena launches. Nothing else.';
+      msg.className='wl-note'; msg.textContent=base;
+      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em) || em.length>254){ msg.textContent='Please enter a valid email.'; msg.className='wl-note err'; form.email.focus(); return; }
+      btn.disabled=true; btn.textContent='Joining…';
+      fetch(SB_URL+'/rest/v1/waitlist',{method:'POST',headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},
+        body:JSON.stringify({email:em,source:WL_SRC,consent:true,locale:(navigator.language||'').slice(0,20)})})
+      .then(function(r){ if(r.ok||r.status===409){ track('waitlist_join',{source:WL_SRC,place:form.getAttribute('data-place'),duplicate:r.status===409}); wlDone(form); } else { throw new Error(r.status); } })
+      .catch(function(){ btn.disabled=false; btn.textContent='Get early access'; msg.textContent='Something went wrong. Please try again.'; msg.className='wl-note err'; });
+    });
+  });
+  try{ if(localStorage.getItem('mena-wl')==='1'){ var f0=document.querySelector('.wl'); if(f0) wlDone(f0); } }catch(e){}
+  document.addEventListener('click',function(e){ var a=e.target.closest&&e.target.closest('[data-focus-wl]'); if(!a) return; e.preventDefault();
+    var f=document.querySelector('.end .wl input[type=email]'); var box=(f&&f.closest('.wl-wrap'))||document.getElementById('get');
+    box.scrollIntoView({behavior:'smooth',block:'center'}); if(f) setTimeout(function(){ f.focus({preventScroll:true}); },450); });
 
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
