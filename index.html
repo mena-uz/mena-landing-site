@@ -427,6 +427,9 @@ details[open] summary svg{transform:rotate(45deg)}
       if(!r){ var d=(document.referrer||'').toLowerCase(); r=/tiktok/.test(d)?'tiktok':/instagram/.test(d)?'instagram':/youtu/.test(d)?'youtube':/t\.me|telegram/.test(d)?'telegram':d?'other':'direct'; }
       r=r.replace(/[^a-z0-9_.-]/g,'').slice(0,40); r=({tt:'tiktok',tk:'tiktok',ig:'instagram',insta:'instagram',yt:'youtube',tg:'telegram'})[r]||r; return r||'direct'; }catch(e){ return 'direct'; } }
   var WL_SRC=wlSource();
+  /* Link this visitor to their email in PostHog (same email on another device merges into one person). Key = lowercased email, same as in Supabase. */
+  function wlIdentify(em){ try{ if(!window.posthog || !posthog.identify) return; var id=em.toLowerCase();
+      posthog.identify(id,{email:id,last_source:WL_SRC},{waitlist_source:WL_SRC,waitlist_joined_at:new Date().toISOString(),first_host:location.hostname}); }catch(e){} }
   function wlDone(form){ var w=form.parentNode; try{ localStorage.setItem('mena-wl','1'); }catch(e){}
     [].forEach.call(document.querySelectorAll('.cta-main,[data-focus-wl].btn'),function(b){ b.textContent='You\u2019re on the list'; });
     [].forEach.call(document.querySelectorAll('.wl'),function(f){ f.outerHTML='<div class="wl-done"><span class="ok"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b>You&rsquo;re on the list</b><button type="button" class="wl-share" data-attr="waitlist_share">Share</button></div><p class="wl-note">We&rsquo;ll email you the day Mena launches.</p><div class="wl-follow"><span>Follow along while you wait</span><a href="https://www.instagram.com/app.mena/" target="_blank" rel="noopener" data-attr="waitlist_follow_instagram" class="wl-f" aria-label="Mena on Instagram"><svg width="18" height="18"><use href="#ig"/></svg>Instagram</a><a href="https://t.me/appmena" target="_blank" rel="noopener" data-attr="waitlist_follow_telegram" class="wl-f" aria-label="Mena on Telegram"><svg width="18" height="18"><use href="#tg"/></svg>Telegram</a></div>'; });
@@ -440,7 +443,7 @@ details[open] summary svg{transform:rotate(45deg)}
       btn.disabled=true; btn.textContent='Joining…';
       fetch(SB_URL+'/rest/v1/waitlist',{method:'POST',headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},
         body:JSON.stringify({email:em,source:WL_SRC,consent:true,locale:(navigator.language||'').slice(0,20)})})
-      .then(function(r){ if(r.ok||r.status===409){ track('waitlist_join',{source:WL_SRC,place:form.getAttribute('data-place'),duplicate:r.status===409}); wlDone(form); } else { throw new Error(r.status); } })
+      .then(function(r){ if(r.ok||r.status===409){ wlIdentify(em); track('waitlist_join',{source:WL_SRC,place:form.getAttribute('data-place'),duplicate:r.status===409}); wlDone(form); } else { throw new Error(r.status); } })
       .catch(function(){ btn.disabled=false; btn.textContent='Get early access'; msg.textContent='Something went wrong. Please try again.'; msg.className='wl-note err'; });
     });
   });
