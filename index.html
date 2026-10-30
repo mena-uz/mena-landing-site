@@ -182,6 +182,10 @@ details[open] summary svg{transform:rotate(45deg)}
 .wl-done .ok{width:26px; height:26px; border-radius:50%; background:var(--skin); color:#141414; display:flex; align-items:center; justify-content:center; flex-shrink:0}
 .wl-done b{flex:1; font-size:16px; font-weight:600; letter-spacing:-.01em}
 .wl-done button{height:48px; padding:0 18px; border:0; border-radius:24px; background:var(--tile-2); color:var(--ink); font:inherit; font-size:15px; font-weight:600; cursor:pointer}
+.wl-follow{display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:8px; margin-top:18px; padding-top:16px; border-top:1px solid var(--hair)}
+.wl-follow span{width:100%; font-size:15px; font-weight:600; letter-spacing:-.01em; margin-bottom:4px}
+.wl-f{display:inline-flex; align-items:center; gap:8px; height:44px; padding:0 18px; border-radius:22px; background:var(--tile); box-shadow:inset 0 0 0 1px var(--hair); color:var(--ink); font-size:15px; font-weight:600; transition:background .2s}
+.wl-f:hover{background:var(--tile-2)}
 .soonrow{display:flex; align-items:center; justify-content:center; gap:5px; margin-top:18px; font-size:13px; color:var(--sub)}
 .soonrow svg{opacity:.75}
 
@@ -410,6 +414,7 @@ details[open] summary svg{transform:rotate(45deg)}
     else if(a.closest('.dock')) track('cta_click',{place:'dock'});
     else if(a.classList.contains('cta-main')) track('cta_click',{place:'hero'});
     else if(a.closest('.nav') && a.classList.contains('btn')) track('cta_click',{place:'nav'});
+    else if(a.classList.contains('wl-f')) track('social_click',{network:a.getAttribute('aria-label').indexOf('Instagram')>-1?'instagram':'telegram',place:'after_waitlist'});
     else if(a.closest('.social')) track('social_click',{network:a.getAttribute('aria-label').indexOf('Instagram')>-1?'instagram':'telegram'});
     else if(a.tagName==='SUMMARY') track('faq_open',{question:a.textContent.trim()});
     else if(a.id==='b12') track('score_toggle',{view:'in_12_weeks'});
@@ -424,7 +429,7 @@ details[open] summary svg{transform:rotate(45deg)}
   var WL_SRC=wlSource();
   function wlDone(form){ var w=form.parentNode; try{ localStorage.setItem('mena-wl','1'); }catch(e){}
     [].forEach.call(document.querySelectorAll('.cta-main,[data-focus-wl].btn'),function(b){ b.textContent='You\u2019re on the list'; });
-    [].forEach.call(document.querySelectorAll('.wl'),function(f){ f.outerHTML='<div class="wl-done"><span class="ok"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b>You&rsquo;re on the list</b><button type="button" class="wl-share" data-attr="waitlist_share">Share</button></div><p class="wl-note">We&rsquo;ll email you the day Mena launches.</p>'; });
+    [].forEach.call(document.querySelectorAll('.wl'),function(f){ f.outerHTML='<div class="wl-done"><span class="ok"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b>You&rsquo;re on the list</b><button type="button" class="wl-share" data-attr="waitlist_share">Share</button></div><p class="wl-note">We&rsquo;ll email you the day Mena launches.</p><div class="wl-follow"><span>Follow along while you wait</span><a href="https://instagram.com/trymena" target="_blank" rel="noopener" data-attr="waitlist_follow_instagram" class="wl-f" aria-label="Mena on Instagram"><svg width="18" height="18"><use href="#ig"/></svg>Instagram</a><a href="https://t.me/trymena" target="_blank" rel="noopener" data-attr="waitlist_follow_telegram" class="wl-f" aria-label="Mena on Telegram"><svg width="18" height="18"><use href="#tg"/></svg>Telegram</a></div>'; });
     [].forEach.call(document.querySelectorAll('.wl-share'),function(b){ b.addEventListener('click',function(){ var u='https://trymena.app/?ref=share'; if(navigator.share){ track('waitlist_share',{method:'native',outcome:'opened'}); navigator.share({title:'Mena',text:'A 12-week plan to look your best',url:u}).then(function(){ track('waitlist_share',{method:'native',outcome:'shared'}); }).catch(function(){ track('waitlist_share',{method:'native',outcome:'cancelled'}); }); } else { try{ navigator.clipboard.writeText(u); b.textContent='Link copied'; track('waitlist_share',{method:'copy',outcome:'copied'}); }catch(e){ track('waitlist_share',{method:'copy',outcome:'failed'}); } } }); });
   }
   [].forEach.call(document.querySelectorAll('.wl'),function(form){
